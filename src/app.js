@@ -1,7 +1,8 @@
-import React from "react";
-import { render } from "react-dom";
+import React from 'react';
+import { render } from 'react-dom';
 class Test extends React.Component {
     render() {
+        console.log('pretty');
         return <div>test boy</div>;
     }
 }
@@ -15,4 +16,4 @@ const App = () => {
     );
 };
 
-render(<App />, document.getElementById("index"));
+render(<App />, document.getElementById('index'));
