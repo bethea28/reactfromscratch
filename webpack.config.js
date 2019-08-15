@@ -7,16 +7,22 @@ const html = new HtmlWebpackPlugin({
 });
 
 module.exports = {
-    entry: './src/app.js',
+    entry: './src/app.tsx',
     output: {
         path: path.resolve(__dirname, './dist'),
         filename: 'index_bundle.js',
+    },
+    devtool: 'source-map',
+
+    resolve: {
+        // Add '.ts' and '.tsx' as resolvable extensions.
+        extensions: ['.ts', '.tsx', '.js'],
     },
     plugins: [html],
     module: {
         rules: [
             {
-                test: /\.(js|jsx)$/,
+                test: /\.(js|jsx|ts|tsx)$/,
                 exclude: /node_modules/,
                 use: {
                     loader: 'babel-loader',
@@ -25,6 +31,10 @@ module.exports = {
             {
                 test: /\.(scss|css)$/,
                 use: ['style-loader', 'css-loader', 'sass-loader'],
+            },
+            {
+                test: /\.tsx?$/,
+                loader: 'ts-loader',
             },
         ],
     },
